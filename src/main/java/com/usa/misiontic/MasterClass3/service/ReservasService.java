@@ -1,52 +1,58 @@
 package com.usa.misiontic.MasterClass3.service;
 
 import com.usa.misiontic.MasterClass3.entities.Product;
-import com.usa.misiontic.MasterClass3.repository.ProductRepository;
+import com.usa.misiontic.MasterClass3.entities.Reservas;
+import com.usa.misiontic.MasterClass3.repository.ReservasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService {
+public class ReservasService {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ReservasRepository reservasRepository;
 
-    public List<Product> getAll(){
-        return productRepository.getAll();
+    public List<Reservas> getAll(){
+        return reservasRepository.getAll();
     }
-    public Optional<Product> getProduct(int id){
-        return productRepository.getProduct(id);
+    public Optional<Reservas> getReservas(int id){
+        return reservasRepository.getReservas(id);
     }
-    public Product save(Product p){
+    public Reservas save(Reservas p){
         if (p.getId()==null) {
-            return productRepository.save(p);
+            return reservasRepository.save(p);
         }else{
-            Optional<Product> e =productRepository.getProduct(p.getId());
+            Optional<Reservas> e = reservasRepository.getReservas(p.getId());
             if (e.isPresent()){
                 return p;
             }else{
-                return productRepository.save(p);
+                return reservasRepository.save(p);
             }
         }
     }
-    public Product update(Product p){
+    public Reservas update(Reservas p){
         if (p.getId()!=null){
-            Optional<Product> q =productRepository.getProduct(p.getId());
+            Optional<Reservas> q = reservasRepository.getReservas(p.getId());
             if (q.isPresent()){
-                if (p.getName()!=null){
-                    q.get().setName(p.getName());
+                if (p.getId()!=null){
+                    q.get().setId(p.getId());
                 }
-                if (p.getYear()!=null){
-                    q.get().setYear(p.getYear());
+                if (p.getPalco()!=null){
+                    q.get().setPalco(p.getPalco());
                 }
-                if (p.getCategory()!=null){
-                    q.get().setCategory(p.getCategory());
+                if (p.getCliente()!=null){
+                    q.get().setCliente(p.getCliente());
                 }
-                productRepository.save(q.get());
+                if (p.getFechainicio()!=null){
+                    q.get().setFechainicio(p.getFechainicio());
+                }
+                if (p.getFechafin()!=null){
+                    q.get().setFechafin(p.getFechafin());
+                }
+                reservasRepository.save(q.get());
                 return q.get();
             }else{
                 return p;
@@ -57,9 +63,9 @@ public class ProductService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Product>p=productRepository.getProduct(id);
+        Optional<Reservas>p= reservasRepository.getReservas(id);
         if (p.isPresent()){
-            productRepository.delete(p.get());
+            reservasRepository.delete(p.get());
             flag=true;
         }
         return flag;

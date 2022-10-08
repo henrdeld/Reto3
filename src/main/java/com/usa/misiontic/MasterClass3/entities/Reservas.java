@@ -4,22 +4,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(name = "product")
-public class Product implements Serializable {
+@Table(name = "reservas")
+public class Reservas implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private Integer year;
+    private String palco;
+    private String cliente;
+    private Date fechainicio;
+    private Date fechafin;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("products")
+    @JsonIgnoreProperties("reservas")
     private Category category;
-
 
     public Integer getId() {
         return id;
@@ -29,20 +31,36 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPalco() {
+        return palco;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPalco(String palco) {
+        this.palco = palco;
     }
 
-    public Integer getYear() {
-        return year;
+    public String getCliente() {
+        return cliente;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public Date getFechainicio() {
+        return fechainicio;
+    }
+
+    public void setFechainicio(Date fechainicio) {
+        this.fechainicio = fechainicio;
+    }
+
+    public Date getFechafin() {
+        return fechafin;
+    }
+
+    public void setFechafin(Date fechafin) {
+        this.fechafin = fechafin;
     }
 
     public Category getCategory() {
