@@ -12,25 +12,26 @@ public class Partyroom implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPartyroom;
+    private Integer id;
     private String name;
     private String owner;
     private String capacity;
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "idCategory")
-    @JsonIgnoreProperties("Partyroom")
+    @JoinColumn(name = "idcategory")
+    @JsonIgnoreProperties("partyroom")
     private Category category;
 
+
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "partyroom")
-    @JsonIgnoreProperties({"tool","messages"})
+    @JsonIgnoreProperties({"partyroom","client"})
     private List<Message> messages;
+
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "partyroom")
     @JsonIgnoreProperties({"partyroom","messages"})
     private List<Reservation> reservations;
-
 
 
     /*
@@ -59,14 +60,6 @@ public class Partyroom implements Serializable {
         this.category = category;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
     public List<Message> getMessages() {
         return messages;
     }
@@ -75,14 +68,23 @@ public class Partyroom implements Serializable {
         this.messages = messages;
     }
 
-// /////////////////////////////////////////////////////////////////////////////////
-
-    public Integer getIdPartyroom() {
-        return idPartyroom;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setIdPartyroom(Integer idPartyroom) {
-        this.idPartyroom = idPartyroom;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+
+    // /////////////////////////////////////////////////////////////////////////////////
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer idPartyroom) {
+        this.id = idPartyroom;
     }
 
     public String getName() {
