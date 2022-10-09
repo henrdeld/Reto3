@@ -1,8 +1,7 @@
 package com.usa.misiontic.MasterClass3.service;
 
-import com.usa.misiontic.MasterClass3.entities.Category;
-import com.usa.misiontic.MasterClass3.entities.Library;
-import com.usa.misiontic.MasterClass3.repository.LibraryRepository;
+import com.usa.misiontic.MasterClass3.entities.Partyroom;
+import com.usa.misiontic.MasterClass3.repository.PartyroomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,32 +9,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LibraryService {
+public class PartyroomService {
 
     @Autowired
-    private LibraryRepository libraryRepository;
+    private PartyroomRepository partyroomRepository;
 
-    public List<Library> getAll(){
-        return libraryRepository.getAll();
+    public List<Partyroom> getall(){
+        return partyroomRepository.getAll();
     }
-    public Optional<Library> getCategory(int id){
-        return libraryRepository.getLibrary(id);
+    public Optional<Partyroom> getPartyroom(int id){
+        return partyroomRepository.getPartyroom(id);
     }
-    public Library save(Library p){
+    public Partyroom save(Partyroom p){
         if (p.getId()==null) {
-            return libraryRepository.save(p);
+            return partyroomRepository.save(p);
         }else{
-            Optional<Library> e = libraryRepository.getLibrary(p.getId());
+            Optional<Partyroom> e = partyroomRepository.getPartyroom(p.getId());
             if (e.isPresent()){
                 return p;
             }else{
-                return libraryRepository.save(p);
+                return partyroomRepository.save(p);
             }
         }
     }
-    public Library update(Library p){
+    public Partyroom update(Partyroom p){
         if (p.getId()!=null){
-            Optional<Library> q = libraryRepository.getLibrary(p.getId());
+            Optional<Partyroom> q = partyroomRepository.getPartyroom(p.getId());
             if (q.isPresent()){
                 if (p.getName()!=null){
                     q.get().setName(p.getName());
@@ -46,10 +45,10 @@ public class LibraryService {
                 if (p.getTarget()!=null){
                     q.get().setTarget(p.getTarget());
                 }
-                if (p.getCategory()!=null){
-                    q.get().setCategory(p.getCategory());
-                }
-                libraryRepository.save(q.get());
+                //if (p.getCategory()!=null){
+                //    q.get().setCategory(p.getCategory());
+                //}
+                partyroomRepository.save(q.get());
                 return q.get();
             }else{
             return p;
@@ -60,9 +59,9 @@ public class LibraryService {
         }
         public boolean delete(int id){
             boolean flag=false;
-            Optional<Library>p= libraryRepository.getLibrary(id);
+            Optional<Partyroom>p= partyroomRepository.getPartyroom(id);
             if (p.isPresent()){
-                libraryRepository.delete(p.get());
+                partyroomRepository.delete(p.get());
                 flag=true;
             }
             return flag;

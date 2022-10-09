@@ -16,10 +16,12 @@ public class Category implements Serializable {
     private String name;
     private String description;
 
-
+/*
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
     @JsonIgnoreProperties("category")
     private List<Library> partyrooms;
+
+ */
 
     //@OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
     //@JsonIgnoreProperties("category")
@@ -48,13 +50,5 @@ public class Category implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Library> getPartyrooms() {
-        return partyrooms;
-    }
-
-    public void setPartyrooms(List<Library> partyrooms) {
-        this.partyrooms = partyrooms;
     }
 }
