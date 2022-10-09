@@ -14,6 +14,24 @@ public class Message implements Serializable {
     private Integer idMessage;
     private String messageText;
 
+    @ManyToOne
+    @JoinColumn(name = "idPartyroom")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Partyroom partyroom;
+
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client client;
+
+    /*
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client client;
+
+*/
+
     /*
     @ManyToOne
     @JoinColumn(name = "clientId")
@@ -21,6 +39,26 @@ public class Message implements Serializable {
     private Category category;
 
      */
+
+    /////////////////////////////////////////////////////////////////////////
+
+    public Partyroom getPartyroom() {
+        return partyroom;
+    }
+
+    public void setPartyroom(Partyroom partyroom) {
+        this.partyroom = partyroom;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    /////////////////////////////////////////////////////////////////////////
 
     public Integer getIdMessage() {
         return idMessage;

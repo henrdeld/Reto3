@@ -1,5 +1,7 @@
 package com.usa.misiontic.MasterClass3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +17,16 @@ public class Reservation implements Serializable {
     private Date devolutionDate;
     private String status = "created";
 
+    @ManyToOne
+    @JoinColumn(name = "idPartyroom")
+    @JsonIgnoreProperties("reservations")
+    private Partyroom partyroom;
+
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Client client;
+
     /*
     @ManyToOne
     @JoinColumn(name = "id")
@@ -29,6 +41,27 @@ public class Reservation implements Serializable {
     private Client client;
 
      */
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public Partyroom getPartyroom() {
+        return partyroom;
+    }
+
+    public void setPartyroom(Partyroom partyroom) {
+        this.partyroom = partyroom;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Integer getIdReservation() {
         return idReservation;
