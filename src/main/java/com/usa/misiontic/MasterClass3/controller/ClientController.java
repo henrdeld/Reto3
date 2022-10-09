@@ -5,6 +5,7 @@ import com.usa.misiontic.MasterClass3.entities.Client;
 import com.usa.misiontic.MasterClass3.entities.Product;
 import com.usa.misiontic.MasterClass3.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ClientController {
         return clientService.getAll();
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody Client c){
         return clientService.save(c);
     }
