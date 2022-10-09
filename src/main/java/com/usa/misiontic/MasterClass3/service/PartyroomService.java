@@ -21,10 +21,10 @@ public class PartyroomService {
         return partyroomRepository.getPartyroom(id);
     }
     public Partyroom save(Partyroom p){
-        if (p.getId()==null) {
+        if (p.getIdPartyroom()==null) {
             return partyroomRepository.save(p);
         }else{
-            Optional<Partyroom> e = partyroomRepository.getPartyroom(p.getId());
+            Optional<Partyroom> e = partyroomRepository.getPartyroom(p.getIdPartyroom());
             if (e.isPresent()){
                 return p;
             }else{
@@ -33,8 +33,8 @@ public class PartyroomService {
         }
     }
     public Partyroom update(Partyroom p){
-        if (p.getId()!=null){
-            Optional<Partyroom> q = partyroomRepository.getPartyroom(p.getId());
+        if (p.getIdPartyroom()!=null){
+            Optional<Partyroom> q = partyroomRepository.getPartyroom(p.getIdPartyroom());
             if (q.isPresent()){
                 if (p.getName()!=null){
                     q.get().setName(p.getName());
@@ -42,12 +42,18 @@ public class PartyroomService {
                 if (p.getDescription()!=null){
                     q.get().setDescription(p.getDescription());
                 }
-                if (p.getTarget()!=null){
-                    q.get().setTarget(p.getTarget());
+                if (p.getName()!=null){
+                    q.get().setName(p.getName());
                 }
-                //if (p.getCategory()!=null){
-                //    q.get().setCategory(p.getCategory());
-                //}
+                if (p.getOwner()!=null){
+                    q.get().setOwner(p.getOwner());
+                }
+                if (p.getCapacity()!=null){
+                    q.get().setCapacity(p.getCapacity());
+                }
+                if (p.getDescription()!=null){
+                    q.get().setDescription(p.getDescription());
+                }
                 partyroomRepository.save(q.get());
                 return q.get();
             }else{

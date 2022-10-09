@@ -1,5 +1,7 @@
 package com.usa.misiontic.MasterClass3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,10 +11,17 @@ public class Partyroom implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idPartyroom;
     private String name;
-    private String target;
+    private String owner;
+    private String capacity;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "idCategory")
+    @JsonIgnoreProperties("Partyroom")
+    private Category category;
+
 
     /*
     @ManyToOne
@@ -22,12 +31,12 @@ public class Partyroom implements Serializable {
 
      */
 
-    public Integer getId() {
-        return id;
+    public Integer getIdPartyroom() {
+        return idPartyroom;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPartyroom(Integer idPartyroom) {
+        this.idPartyroom = idPartyroom;
     }
 
     public String getName() {
@@ -38,12 +47,20 @@ public class Partyroom implements Serializable {
         this.name = name;
     }
 
-    public String getTarget() {
-        return target;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
     }
 
     public String getDescription() {
