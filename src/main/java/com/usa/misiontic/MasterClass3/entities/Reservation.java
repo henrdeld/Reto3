@@ -28,6 +28,8 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
 
+    private String score;
+
     /*
     @ManyToOne
     @JoinColumn(name = "id")
@@ -55,6 +57,15 @@ public class Reservation implements Serializable {
      */
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 
     public Partyroom getPartyroom() {
         return partyroom;

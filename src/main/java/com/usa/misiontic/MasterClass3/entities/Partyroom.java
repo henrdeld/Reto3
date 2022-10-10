@@ -15,12 +15,12 @@ public class Partyroom implements Serializable {
     private Integer id;
     private String name;
     private String owner;
-    private String capacity;
+    private Integer capacity;
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "idcategory")
-    @JsonIgnoreProperties("partyroom")
+    @JsonIgnoreProperties("partyrooms")
     private Category category;
 
 
@@ -34,23 +34,54 @@ public class Partyroom implements Serializable {
     private List<Reservation> reservations;
 
 
-    /*
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Partyroom")
-    @JsonIgnoreProperties({"Partyroom","client"})
-    private List<Message> messages;
-
-     */
-
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("libs")
-    private Category category;
-
-     */
 
 ///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    // /////////////////////////////////////////////////////////////////////////////////
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Category getCategory() {
         return category;
@@ -74,48 +105,5 @@ public class Partyroom implements Serializable {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
-    }
-
-
-    // /////////////////////////////////////////////////////////////////////////////////
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer idPartyroom) {
-        this.id = idPartyroom;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(String capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
