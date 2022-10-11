@@ -28,7 +28,11 @@ public class PartyroomController {
         return partyroomService.save(p);
     }
 
-
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id) {
+        return partyroomService.delete(id);
+    }
 
 
 }

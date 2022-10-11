@@ -25,5 +25,6 @@ public class CategoryRepository {
     }
     public void delete(Category c){
         categoryCrudRepository.delete(c);
+
     }
 }

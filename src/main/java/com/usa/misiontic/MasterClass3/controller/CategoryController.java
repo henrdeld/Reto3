@@ -30,7 +30,17 @@ public class CategoryController {
         return categoryService.save(p);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id) {
+        return categoryService.delete(id);
+    }
 
+    @PostMapping("/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Category update(@RequestBody Category p){
+        return categoryService.save(p);
+    }
 
 
 }
