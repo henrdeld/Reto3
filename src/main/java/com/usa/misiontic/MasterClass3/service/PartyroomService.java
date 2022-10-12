@@ -39,12 +39,6 @@ public class PartyroomService {
                 if (p.getName()!=null){
                     q.get().setName(p.getName());
                 }
-                if (p.getDescription()!=null){
-                    q.get().setDescription(p.getDescription());
-                }
-                if (p.getName()!=null){
-                    q.get().setName(p.getName());
-                }
                 if (p.getOwner()!=null){
                     q.get().setOwner(p.getOwner());
                 }
@@ -54,6 +48,10 @@ public class PartyroomService {
                 if (p.getDescription()!=null){
                     q.get().setDescription(p.getDescription());
                 }
+                if (p.getCapacity()!=null){
+                    q.get().setCapacity(p.getCapacity());
+                }
+
                 partyroomRepository.save(q.get());
                 return q.get();
             }else{

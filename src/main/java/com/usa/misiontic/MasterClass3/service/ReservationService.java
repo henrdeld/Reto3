@@ -36,9 +36,7 @@ public class ReservationService {
         if (p.getIdReservation()!=null){
             Optional<Reservation> q = reservasRepository.getReservas(p.getIdReservation());
             if (q.isPresent()){
-                if (p.getIdReservation()!=null){
-                    q.get().setIdReservation(p.getIdReservation());
-                }
+
                 if (p.getStartDate()!=null){
                     q.get().setStartDate(p.getStartDate());
                 }

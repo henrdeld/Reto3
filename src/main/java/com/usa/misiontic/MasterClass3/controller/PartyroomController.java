@@ -1,6 +1,7 @@
 package com.usa.misiontic.MasterClass3.controller;
 
 
+import com.usa.misiontic.MasterClass3.entities.Category;
 import com.usa.misiontic.MasterClass3.entities.Partyroom;
 import com.usa.misiontic.MasterClass3.service.PartyroomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class PartyroomController {
         return partyroomService.delete(id);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Partyroom update(@RequestBody Partyroom p){
+        return partyroomService.update(p);
+    }
 
 }

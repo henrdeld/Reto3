@@ -36,10 +36,10 @@ public class CategoryController {
         return categoryService.delete(id);
     }
 
-    @PostMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Category update(@RequestBody Category p){
-        return categoryService.save(p);
+        return categoryService.update(p);
     }
 
 

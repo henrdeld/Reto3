@@ -1,6 +1,7 @@
 package com.usa.misiontic.MasterClass3.controller;
 
 
+import com.usa.misiontic.MasterClass3.entities.Category;
 import com.usa.misiontic.MasterClass3.entities.Reservation;
 import com.usa.misiontic.MasterClass3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class ReservationController {
         return reservationService.delete(id);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation p){
+        return reservationService.update(p);
+    }
 
 }

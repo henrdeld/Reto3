@@ -1,6 +1,7 @@
 package com.usa.misiontic.MasterClass3.controller;
 
 
+import com.usa.misiontic.MasterClass3.entities.Category;
 import com.usa.misiontic.MasterClass3.entities.Client;
 import com.usa.misiontic.MasterClass3.entities.Product;
 import com.usa.misiontic.MasterClass3.service.ClientService;
@@ -32,6 +33,10 @@ public class ClientController {
     public boolean delete(@PathVariable("id") int id) {
         return clientService.delete(id);
     }
-
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client update(@RequestBody Client p){
+        return clientService.update(p);
+    }
 
 }
