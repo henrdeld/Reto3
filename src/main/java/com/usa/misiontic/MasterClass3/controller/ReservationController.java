@@ -12,6 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Reservation")
+
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+
 public class ReservationController {
 
     @Autowired
@@ -38,5 +41,21 @@ public class ReservationController {
     public Reservation update(@RequestBody Reservation p){
         return reservationService.update(p);
     }
+/*
+    //Reto 5
+    @GetMapping("/report-dates/{fecha1}/{fecha2}")
+    public List<Reservation> getReservationBetweenDatesReport(@PathVariable("fecha1") String fecha1, @PathVariable("fecha2") String fecha2){
+        return reservationService.getReservationBetweenDatesReport(fecha1 ,fecha2);
+    }
 
+    @GetMapping("/report-status")
+    public CompletedAndCancelled getReservationsStatusReport(){
+        return reservationService.getReservationsStatusReport;
+    }
+
+    @GetMapping("/report-clients")
+    public List<TotalAndClient> getTopClientsReport(){
+        return reservationService.getTopClientsReport;
+    }
+*/
 }
