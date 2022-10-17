@@ -1,6 +1,8 @@
 package com.usa.misiontic.MasterClass3.controller;
 
 
+import com.usa.misiontic.MasterClass3.ModelsCustomized.CountClient;
+import com.usa.misiontic.MasterClass3.ModelsCustomized.StatusAmount;
 import com.usa.misiontic.MasterClass3.entities.Category;
 import com.usa.misiontic.MasterClass3.entities.Reservation;
 import com.usa.misiontic.MasterClass3.service.ReservationService;
@@ -12,9 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Reservation")
-
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-
 public class ReservationController {
 
     @Autowired
@@ -41,21 +40,22 @@ public class ReservationController {
     public Reservation update(@RequestBody Reservation p){
         return reservationService.update(p);
     }
-/*
-    //Reto 5
-    @GetMapping("/report-dates/{fecha1}/{fecha2}")
-    public List<Reservation> getReservationBetweenDatesReport(@PathVariable("fecha1") String fecha1, @PathVariable("fecha2") String fecha2){
-        return reservationService.getReservationBetweenDatesReport(fecha1 ,fecha2);
+
+    //Reto5
+    @GetMapping("/reports-clients")
+    public List<CountClient> getReservationReportClient(){
+        return reservationService.getTopClients();
     }
 
     @GetMapping("/report-status")
-    public CompletedAndCancelled getReservationsStatusReport(){
-        return reservationService.getReservationsStatusReport;
+    public StatusAmount getReservationStatus(){
+        return reservationService.getReservationStatusReport();
     }
 
-    @GetMapping("/report-clients")
-    public List<TotalAndClient> getTopClientsReport(){
-        return reservationService.getTopClientsReport;
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationPeriod(dateOne,dateTwo);
     }
-*/
+
+
 }
