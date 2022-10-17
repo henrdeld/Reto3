@@ -33,7 +33,7 @@ public class ReservationRepository {
 
     //Reto 5
 
-    public List<CountClient> getTopClients()  {
+    public List<CountClient> getTopClients() {
         List<CountClient> resultado = new ArrayList<>();
         List<Object[]> report = reservationCrudRepository.countTotalReservationsByClient();
         for (int i =0; i< report.size();i++){
